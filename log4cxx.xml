@@ -1,0 +1,33 @@
+# Set root logger level to DEBUG and its appenders to fileSink and consoleSink.
+log4j.rootLogger=DEBUG, fileSink, consoleSink
+ 
+# consoleSink is set to be a ConsoleAppender.
+log4j.appender.consoleSink=org.apache.log4j.ConsoleAppender
+
+# consoleSink uses PatternLayout.
+log4j.appender.consoleSink.layout=org.apache.log4j.PatternLayout
+
+# %C = output the class of the issuer of the logging event if the compiler used supports a macro to retrieve the method of the currently compiled line
+# %M = output the method of the issuer of the logging event if the compiler used supports a macro to retrieve the method of the currently compiled line
+# %d = output the date of the logging event
+# %t = output the name of the thread that generated the logging event.
+# %F = output the file name where the logging request was issued
+# %L = output the line number from where the logging request was issued
+# %p = output the level of the logging event
+# %c = output the logger name of the logging event
+# %m = output the application supplied message associated with the logging event
+# %n = outputs the platform dependent line separator character or characters
+log4j.appender.consoleSink.layout.ConversionPattern=[%d] [%C] [%M] (%F:%L) %-5p %c - %m%n
+
+
+# fileSink is set to be a RollingFileAppender
+log4j.appender.fileSink=org.apache.log4j.RollingFileAppender
+log4j.appender.fileSink.File=../example.log
+
+log4j.appender.fileSink.MaxFileSize=100KB
+# Keep one backup file
+log4j.appender.fileSink.MaxBackupIndex=1
+
+# fileSink uses PatternLayout.
+log4j.appender.fileSink.layout=org.apache.log4j.PatternLayout
+log4j.appender.fileSink.layout.ConversionPattern=[%d] [%C] [%M] (%F:%L) %-5p %c - %m%n
